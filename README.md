@@ -1,30 +1,40 @@
 # Todo app
 
+A Spring boot REST API to read/create todo entries.
+Data are stored in a PostgresQL Database
+
 ## How to build it ?
+
 
 `mvn clean package` is all you need
 
+
 ## How to run it locally ?
 
-A docker-compose version is coming... Waiting for it ou'll have to start a postgresql container on the same network.
+### Using Docker (easiest)
 
-### Create a docker network
+Build the containers : 
 
-`docker network create jpn-network`
+`docker-compose build`
 
-## Start a local PostgresQL
+Start the containers : 
 
-You can do that using docker : 
+`docker-compose up`
 
-`docker run --network=jpn-network -p 5432:5432 --name some-postgres -e POSTGRES_PASSWORD=postgres -d postgres`
+Stop the containers : 
 
-## Build the Dockerfile
+`docker-compose stop`
 
-`docker build -t todoapp .`
+### Without Docker
 
-## Run the container
+`java -jar target/todo-0.0.1-SNAPSHOT.jar` will start the app.
+By default it will try to connect to a local PostgresQL instance using postgres/postgres as credentials.
 
-`docker run --network=jpn-network -p 8080:8080 --name todoapp todoapp`
+If your Postgresql is running somewhere else or using other credentials you can set Spring properties in the command line :
+ 
+`java -jar target/todo-0.0.1-SNAPSHOT.jar --spring.datasource.url=jdbc:postgresql://mypostgresql:5432/postgres --spring.datasource.username=myusername --spring.datasource.password=mypassword`
+
+## Using the API
 
 You'll be able to **create** or **list** todo entries using the example below : 
 
