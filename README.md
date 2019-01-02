@@ -11,7 +11,7 @@ Data are stored in a PostgresQL Database
 
 ## How to run it locally ?
 
-### Using Docker (easiest)
+### Using Docker (recommended)
 
 Build the containers : 
 
@@ -21,7 +21,7 @@ Start the containers :
 
 `docker-compose up`
 
-Stop the containers : 
+Stop the containers (when you're done) : 
 
 `docker-compose stop`
 
@@ -35,6 +35,8 @@ If your Postgresql is running somewhere else or using other credentials you can 
 `java -jar target/todo-0.0.1-SNAPSHOT.jar --spring.datasource.url=jdbc:postgresql://mypostgresql:5432/postgres --spring.datasource.username=myusername --spring.datasource.password=mypassword`
 
 ## Using the API
+
+Once it is started you can browse to http://localhost:8080 and have fun with the swagger UI.
 
 You'll be able to **create** or **list** todo entries using the example below : 
 
